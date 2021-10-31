@@ -5,8 +5,8 @@ POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-    "title": "Gravity's Rainbow",
-    "author": "Thomas Pynchon",
-    "url": "http://fakelink2",
-    "likes": 259
+    "title": "Aeneid",
+    "author": "Virgilio",
+    "url": "http://fakelink3",
+    "likes": 2000
 }
