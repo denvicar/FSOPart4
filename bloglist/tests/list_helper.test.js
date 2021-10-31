@@ -133,3 +133,23 @@ describe('most blogs', () => {
         })
     })
 })
+
+describe('most likes', () => {
+    test('for an empty list to return undefined', ()=>{
+        expect(listHelper.mostLikes([])).toBe(undefined)
+    })
+
+    test('for a single blog to return its author', ()=>{
+        expect(listHelper.mostLikes(blog)).toEqual({
+            author: 'mockauthor',
+            likes: 500
+        })
+    })
+
+    test('for a list to return the author with the most blogs', () => {
+        expect(listHelper.mostLikes(blogListBigger)).toEqual({
+            author: 'author2',
+            likes: 815
+        })
+    })
+})
