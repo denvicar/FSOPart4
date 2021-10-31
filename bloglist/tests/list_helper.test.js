@@ -27,6 +27,49 @@ const blogList = [
     }
 ]
 
+const blogListBigger = [
+    {
+        title: 'title1',
+        author: 'author1',
+        url: 'url1',
+        likes: 350
+    },{
+        title: 'title2',
+        author: 'author2',
+        url: 'url2',
+        likes: 800
+    },{
+        title: 'title3',
+        author: 'author3',
+        url: 'url3',
+        likes: 100
+    },
+    {
+        title: 'title4',
+        author: 'author1',
+        url: 'url4',
+        likes: 5
+    },
+    {
+        title: 'title5',
+        author: 'author1',
+        url: 'url5',
+        likes: 78
+    },
+    {
+        title: 'title6',
+        author: 'author3',
+        url: 'url6',
+        likes: 80
+    },
+    {
+        title: 'title7',
+        author: 'author2',
+        url: 'url7',
+        likes: 15
+    }
+]
+
 
 test('dummy returns 1', () => {
     expect(listHelper.dummy([])).toBe(1)
@@ -67,6 +110,26 @@ describe('favorite blog', () => {
             author: 'author2',
             url: 'url2',
             likes: 800
+        })
+    })
+})
+
+describe('most blogs', () => {
+    test('for an empty list to return undefined', ()=>{
+        expect(listHelper.mostBlogs([])).toBe(undefined)
+    })
+
+    test('for a single blog to return its author', ()=>{
+        expect(listHelper.mostBlogs(blog)).toEqual({
+            author: 'mockauthor',
+            blogs: 1
+        })
+    })
+
+    test('for a list to return the author with the most blogs', () => {
+        expect(listHelper.mostBlogs(blogListBigger)).toEqual({
+            author: 'author1',
+            blogs: 3
         })
     })
 })
