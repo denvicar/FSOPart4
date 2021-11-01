@@ -10,3 +10,6 @@ content-type: application/json
     "url": "http://fakelink3",
     "likes": 2000
 }
+
+###
+DELETE http://localhost:3003/api/blogs/61801d7316f3f5bff65faa3f
