@@ -52,6 +52,23 @@ test('for verifying the insert of a new blog post', async () => {
 
 })
 
+test('for a blog post without likes to default to 0', async () => {
+    const newPost = {
+        author: 'mock author',
+        title: 'post without likes',
+        url: 'test url'
+    }
+
+    const resp = await api
+        .post('/api/blogs')
+        .send(newPost)
+        .expect(201)
+        .expect('Content-Type',/application\/json/)
+
+
+    expect(resp.body.likes).toBe(0)
+})
+
 afterAll(()=>{
     mongoose.connection.close()
 })
