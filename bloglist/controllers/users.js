@@ -4,6 +4,11 @@ const User = require('../models/user')
 
 userRouter.post('/', async (request, response) => {
     const user = request.body
+
+    if(!user.password || user.password.length < 3) {
+        return response.status(400).send({error: "User validation failed: password has to be specified with a minimum length of 3"})
+    }
+
     const passwordHash = await bcrypt.hash(user.password,10)
 
     const userToAdd = new User({
