@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Blog = require('../models/blog')
 const app = require('../app')
 const supertest = require('supertest')
-const helper = require('./test_helper')
 
 const api = supertest(app)
+const helper = require('./test_helper')
 
 beforeEach(async () => {
     await Blog.deleteMany({})
@@ -22,6 +22,13 @@ test('for app returning correct amount of blogs', async () => {
         .expect('Content-Type',/application\/json/)
 
     expect(response.body).toHaveLength(helper.initialBlogs.length)
+})
+
+test('for verifying that unique identifier is id', async () => {
+    const response = await api.get('/api/blogs')
+    for(blog of response.body) {
+        expect(blog.id).toBeDefined()
+    }
 })
 
 afterAll(()=>{
