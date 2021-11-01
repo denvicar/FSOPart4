@@ -96,6 +96,23 @@ test('for deletion of a post', async () => {
     expect(updatedPosts.map(p=>p.title)).not.toContain(postToDelete.title)
 })
 
+test('for update of a post', async () => {
+    const response = await api.get('/api/blogs')
+    const idToUpdate = response.body[0].id
+    const updateQuery = {
+        likes: 999
+    }
+    const updated = await api
+        .put(`/api/blogs/${idToUpdate}`)
+        .send(updateQuery)
+        .expect(200)
+        .expect('Content-Type',/application\/json/)
+
+    expect(updated.body.likes).toBe(999)
+    
+    
+})
+
 afterAll(()=>{
     mongoose.connection.close()
 })
