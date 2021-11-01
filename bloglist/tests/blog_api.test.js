@@ -84,6 +84,18 @@ test('for inserting a post without title', async () => {
 
 })
 
+test('for deletion of a post', async () => {
+    const response = await api.get('/api/blogs')
+    const postToDelete = response.body[0]
+
+    await api
+        .delete(`/api/blogs/${postToDelete.id}`)
+        .expect(204)
+    
+    const updatedPosts = await helper.blogsInDb()
+    expect(updatedPosts.map(p=>p.title)).not.toContain(postToDelete.title)
+})
+
 afterAll(()=>{
     mongoose.connection.close()
 })
