@@ -69,6 +69,21 @@ test('for a blog post without likes to default to 0', async () => {
     expect(resp.body.likes).toBe(0)
 })
 
+test('for inserting a post without title', async () => {
+    const newPostWithoutTitle = {
+        author: 'mock author',
+    }
+
+    await api
+        .post('/api/blogs')
+        .send(newPostWithoutTitle)
+        .expect(400)
+
+    const posts = await helper.blogsInDb()
+    expect(posts.length).toBe(helper.initialBlogs.length)
+
+})
+
 afterAll(()=>{
     mongoose.connection.close()
 })

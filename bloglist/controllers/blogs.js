@@ -1,5 +1,4 @@
 const appRouter = require('express').Router()
-require('express-async-errors')
 const Blog = require('../models/blog')
 
 appRouter.get('/', async (request, response) => {
