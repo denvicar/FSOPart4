@@ -31,6 +31,27 @@ test('for verifying that unique identifier is id', async () => {
     }
 })
 
+test('for verifying the insert of a new blog post', async () => {
+    const newBlog = {
+        author: 'mock',
+        title: 'mock title for test',
+        url: 'mockUrl',
+        likes: 42
+    }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type',/application\/json/)
+
+    const blogPostsAtEnd = await helper.blogsInDb()
+    expect(blogPostsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+    const titles = blogPostsAtEnd.map(b=>b.title)
+    expect(titles).toContain('mock title for test')
+
+})
+
 afterAll(()=>{
     mongoose.connection.close()
 })

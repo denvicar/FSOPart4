@@ -1,4 +1,5 @@
 const appRouter = require('express').Router()
+require('express-async-errors')
 const Blog = require('../models/blog')
 
 appRouter.get('/', async (request, response) => {
@@ -6,14 +7,11 @@ appRouter.get('/', async (request, response) => {
     response.json(blogs)
   })
   
-  appRouter.post('/', (request, response) => {
+  appRouter.post('/', async (request, response) => {
     const blog = new Blog(request.body)
   
-    blog
-      .save()
-      .then(result => {
-        response.status(201).json(result)
-      })
+    const result = await blog.save()
+    response.status(201).json(result)
   })
 
   module.exports = appRouter
