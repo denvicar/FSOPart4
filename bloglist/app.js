@@ -6,8 +6,7 @@ const blogRouter = require('./controllers/blogs')
 const cors = require('cors')
 
 
-const mongoUrl = `mongodb+srv://fullstack:${config.PASSWORD}@cluster0.mcnv3.mongodb.net/bloglist?retryWrites=true&w=majority`
-mongoose.connect(mongoUrl)
+mongoose.connect(config.MONGODB_URI)
 
 app.use(cors())
 app.use(express.json())
