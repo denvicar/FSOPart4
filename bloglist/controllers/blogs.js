@@ -34,8 +34,20 @@ appRouter.post('/', async (request, response) => {
 })
 
 appRouter.delete('/:id', async (request,response) => {
-    await Blog.findByIdAndDelete(request.params.id)
-    response.status(204).end()
+    const decodedToken = jwt.verify(request.token, config.SECRET)
+
+    if(!decodedToken || !decodedToken.id) {
+        return response.status(401).json({error: 'invalid or missing token'})
+    }
+
+    const blogToDelete = await Blog.findById(request.params.id)
+    if(blogToDelete.user.toString() === decodedToken.id) {
+        await blogToDelete.delete()
+        return response.status(204).end()  
+    } 
+
+    response.status(401).send({error: 'you are not allowed to do this operation'})
+
 })
 
 appRouter.put('/:id', async (request,response) => {
