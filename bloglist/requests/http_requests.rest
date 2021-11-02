@@ -6,12 +6,12 @@ content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNmYWVuemEiLCJpZCI6IjYxODAxMjFhMGIwMjFjZTc5Y2RkOTAzMSIsImlhdCI6MTYzNTg0NjE5MX0.bq0c9RShFoSUqs2cv7J6v6JFuuZfKQynHRA3qmJxJpI
 
 {
-    "title": "Aeneid",
-    "author": "Virgilio",
+    "title": "Odyssey",
+    "author": "Homer",
     "url": "http://fakelink3",
-    "likes": 2000
+    "likes": 2500
 }
 
 ###
-DELETE http://localhost:3003/api/blogs/61810aef0b37de70d4e5f8fb
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNmYWVuemEiLCJpZCI6IjYxODAxMjFhMGIwMjFjZTc5Y2RkOTAzMSIsImlhdCI6MTYzNTg0NjE5MX0.bq0c9RShFoSUqs2cv7J6v6JFuuZfKQynHRA3qmJxJpI
+DELETE http://localhost:3003/api/blogs/61814b17737f1b8f329b60b2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sZW5kZXJzIiwiaWQiOiI2MTgxMWIyNDE3YjBlNjg4YjNmOWUyZTYiLCJpYXQiOjE2MzU4NTEwNjZ9.DhRm_yn3OtWMuvGFeDepxpjnmJBjiYDCgZmO4N3xVrw

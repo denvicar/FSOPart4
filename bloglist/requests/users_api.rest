@@ -2,9 +2,9 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username": "cfaenza",
-    "password": "passwordprova",
-    "name": "Ciro Faenza"
+    "username": "mlenders",
+    "password": "testpass",
+    "name": "Mark Lenders"
 }
 
 ###
@@ -17,4 +17,13 @@ Content-Type: application/json
 {
     "username": "cfaenza",
     "password": "passwordprova"
+}
+
+###
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username": "mlenders",
+    "password": "testpass"
 }
